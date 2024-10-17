@@ -7,8 +7,6 @@ from bpe_tokenizer_for_model import bpe_tokenize, train_tokenizer, load_tokenize
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
-
-
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
@@ -22,10 +20,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 모델 경로 및 데이터 경로 설정
-model_path = r'C:\Users\User\Desktop\PythonWorkspace\item_category_recommend\scripts\project\model_result\tokenized_product_category_from_fullset_model_epoch15.bin'
-data_path = r'C:\Users\User\Desktop\PythonWorkspace\item_category_recommend\train_test_data\full_output\before_processed\for_bpe'
-tokenizer_path = r'C:\Users\User\Desktop\PythonWorkspace\item_category_recommend\scripts\project\tokenizer.json'
+# 모델 경로 및 데이터 경로 설정 (상대 경로로 수정)
+model_path = os.path.join(os.getcwd(), "model_result", "tokenized_product_category_from_fullset_model_epoch15.bin")
+data_path = os.path.join(os.getcwd(), "train_test_data", "full_output", "before_processed", "for_bpe")
+tokenizer_path = os.path.join(os.getcwd(), "tokenizer.json")
 
 # FastText 모델 로드 또는 학습
 if os.path.exists(model_path):
