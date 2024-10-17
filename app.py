@@ -21,9 +21,10 @@ app.add_middleware(
 )
 
 # 모델 경로 및 데이터 경로 설정 (상대 경로로 수정)
-model_path = os.path.join(os.getcwd(), "model_result", "tokenized_product_category_from_fullset_model_epoch15.bin")
-data_path = os.path.join(os.getcwd(), "train_test_data", "full_output", "before_processed", "for_bpe")
-tokenizer_path = os.path.join(os.getcwd(), "tokenizer.json")
+model_path = "model_result/tokenized_product_category_from_fullset_model_epoch15.bin"
+data_path = "train_test_data/full_output/before_processed/for_bpe"
+tokenizer_path = "tokenizer.json"
+
 
 # FastText 모델 로드 또는 학습
 if os.path.exists(model_path):
