@@ -1,2 +1,3 @@
 fastapi
 uvicorn
+git+https://github.com/blow1004/item_category_classification_demo.git  # git lfs 파일 필요 시
