@@ -8,6 +8,7 @@ setup(
         'fastapi',
         'uvicorn',
         'fasttext',
+        'tokenizers',
         'jinja2',
         'aiofiles',  # Static files 처리를 위한 패키지
         'python-multipart',  # 파일 업로드를 위한 패키지
