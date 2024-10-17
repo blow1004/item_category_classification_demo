@@ -5,6 +5,8 @@ import fasttext
 import os
 from bpe_tokenizer_for_model import bpe_tokenize, train_tokenizer, load_tokenizer
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
+
 
 
 app = FastAPI()
@@ -12,6 +14,13 @@ templates = Jinja2Templates(directory="templates")
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 모든 도메인에서 요청을 허용
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # 모델 경로 및 데이터 경로 설정
 model_path = r'C:\Users\User\Desktop\PythonWorkspace\item_category_recommend\scripts\project\model_result\tokenized_product_category_from_fullset_model_epoch15.bin'
