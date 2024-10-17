@@ -9,8 +9,9 @@
         const query = document.getElementById("query").value;
 
         const response = await fetch(
-          `/recommend?query=${encodeURIComponent(query)}`
+          `http://localhost:8000/recommend?query=${encodeURIComponent(query)}`
         );
+
         const data = await response.json();
 
         const resultDiv = document.getElementById("results");
