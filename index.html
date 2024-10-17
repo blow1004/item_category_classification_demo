@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="/static/style.css" />
+    <meta charset="UTF-8" />
+    <title>상품 분류 추천 시스템 데모</title>
+    <script>
+      async function getRecommendations() {
+        const query = document.getElementById("query").value;
+
+        const response = await fetch(
+          `/recommend?query=${encodeURIComponent(query)}`
+        );
+        const data = await response.json();
+
+        const resultDiv = document.getElementById("results");
+        resultDiv.innerHTML = "";
+
+        if (data.recommendations.length > 0) {
+          resultDiv.innerHTML += "<h3>추천 결과:</h3>";
+          data.recommendations.forEach((item) => {
+            resultDiv.innerHTML += `<p>라벨: ${item.label}, 확률: ${(
+              item.probability * 100
+            ).toFixed(2)}%</p>`;
+          });
+        } else {
+          resultDiv.innerHTML = "<p>결과가 없습니다.</p>";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>상품 분류 추천 시스템 데모</h1>
+      <label for="query">상품명을 입력하세요:</label>
+      <input type="text" id="query" name="query" />
+      <button onclick="getRecommendations()">추천 받기</button>
+
+      <div id="results"></div>
+    </div>
+  </body>
+</html>
