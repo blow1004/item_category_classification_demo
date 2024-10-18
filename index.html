@@ -36,7 +36,7 @@
       }
 
       // Enter 키를 눌렀을 때 getRecommendations 호출
-      document.addEventListener("DOMContentLoaded", () => {
+      window.onload = () => {
         const input = document.getElementById("query");
         input.addEventListener("keydown", (event) => {
           if (event.key === "Enter") {
@@ -44,7 +44,7 @@
             getRecommendations(); // 추천 함수 호출
           }
         });
-      });
+      };
     </script>
   </head>
   <body>
