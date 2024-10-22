@@ -15,18 +15,18 @@
         //   )}`
         // );
 
-        // const response = await fetch(
-        //   `https://0c51-210-223-36-71.ngrok-free.app/recommend?query=${encodeURIComponent(
-        //     query
-        //   )}`
-        // );
-
-        // Vercel 서버리스 함수로 요청 보내기
         const response = await fetch(
-          `https://item-category-classification-demo.vercel.app/api/recommend?query=${encodeURIComponent(
+          `https://0c51-210-223-36-71.ngrok-free.app/recommend?query=${encodeURIComponent(
             query
           )}`
         );
+
+        // // Vercel 서버리스 함수로 요청 보내기
+        // const response = await fetch(
+        //   `https://item-category-classification-demo.vercel.app/api/recommend?query=${encodeURIComponent(
+        //     query
+        //   )}`
+        // );
 
         const data = await response.json();
 

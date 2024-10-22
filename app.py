@@ -14,11 +14,12 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # 모든 도메인에서 요청을 허용
+    allow_origins=["*"],  # 모든 도메인에서 요청 허용
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # 모델 경로 및 데이터 경로 설정 (상대 경로로 수정)
 model_path = "model_result/tokenized_product_category_from_fullset_model_epoch15.bin"
