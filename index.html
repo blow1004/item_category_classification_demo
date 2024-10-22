@@ -30,6 +30,8 @@
 
         const data = await response.json();
 
+        console.log("Received data:", data); // 콘솔에 응답 데이터를 출력
+
         const resultDiv = document.getElementById("results");
         resultDiv.innerHTML = "";
 
