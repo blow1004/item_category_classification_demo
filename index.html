@@ -8,7 +8,6 @@
       async function getRecommendations() {
         const query = document.getElementById("query").value;
 
-        // 로컬에서 FastAPI 서버를 실행하는 경우
         const response = await fetch(
           `http://210.223.36.71:8000/recommend?query=${encodeURIComponent(
             query

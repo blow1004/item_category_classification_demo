@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/recommend",
+      "destination": "http://210.223.36.71:8000/recommend"
+    }
+  ]
+}
