@@ -8,17 +8,17 @@
       async function getRecommendations() {
         const query = document.getElementById("query").value;
 
-        const response = await fetch(
-          `http://210.223.36.71:8000/recommend?query=${encodeURIComponent(
-            query
-          )}`
-        );
-
         // const response = await fetch(
-        //   `https://0c51-210-223-36-71.ngrok-free.app/recommend?query=${encodeURIComponent(
+        //   `http://210.223.36.71:8000/recommend?query=${encodeURIComponent(
         //     query
         //   )}`
         // );
+
+        const response = await fetch(
+          `https://item-category-classification-demo-chaewons-projects-34ef129e.vercel.app/api/recommend?query=${encodeURIComponent(
+            query
+          )}`
+        );
 
         const data = await response.json();
 
