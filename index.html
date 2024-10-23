@@ -9,8 +9,14 @@
         try {
           const query = document.getElementById("query").value;
 
+          //   const response = await fetch(
+          //     `https://1efe-210-223-36-71.ngrok-free.app/api/recommend?query=${encodeURIComponent(
+          //       query
+          //     )}`
+          //   );
+          // ngrok URL을 공인 IP로 교체
           const response = await fetch(
-            `https://1efe-210-223-36-71.ngrok-free.app/api/recommend?query=${encodeURIComponent(
+            `http://210.223.36.71:8000/recommend?query=${encodeURIComponent(
               query
             )}`
           );
