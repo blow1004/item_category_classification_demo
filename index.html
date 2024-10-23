@@ -6,36 +6,40 @@
     <title>상품 분류 추천 시스템 데모</title>
     <script>
       async function getRecommendations() {
-        const query = document.getElementById("query").value;
+        try {
+          const query = document.getElementById("query").value;
 
-        // const response = await fetch(
-        //   `http://210.223.36.71:8000/recommend?query=${encodeURIComponent(
-        //     query
-        //   )}`
-        // );
+          const response = await fetch(
+            `https://1efe-210-223-36-71.ngrok-free.app/api/recommend?query=${encodeURIComponent(
+              query
+            )}`
+          );
 
-        const response = await fetch(
-          `https://item-category-classification-demo-chaewons-projects-34ef129e.vercel.app/api/recommend?query=${encodeURIComponent(
-            query
-          )}`
-        );
+          if (!response.ok) {
+            throw new Error(`서버 오류: ${response.status}`);
+          }
 
-        const data = await response.json();
+          const data = await response.json();
+          console.log("Received data:", data);
 
-        console.log("Received data:", data); // 콘솔에 응답 데이터를 출력
+          const resultDiv = document.getElementById("results");
+          resultDiv.innerHTML = "";
 
-        const resultDiv = document.getElementById("results");
-        resultDiv.innerHTML = "";
-
-        if (data.recommendations.length > 0) {
-          resultDiv.innerHTML += "<h3>추천 결과:</h3>";
-          data.recommendations.forEach((item) => {
-            resultDiv.innerHTML += `<p>라벨: ${item.label}, 확률: ${(
-              item.probability * 100
-            ).toFixed(2)}%</p>`;
-          });
-        } else {
-          resultDiv.innerHTML = "<p>결과가 없습니다.</p>";
+          if (data.recommendations.length > 0) {
+            resultDiv.innerHTML += "<h3>추천 결과:</h3>";
+            data.recommendations.forEach((item) => {
+              resultDiv.innerHTML += `<p>라벨: ${item.label}, 확률: ${(
+                item.probability * 100
+              ).toFixed(2)}%</p>`;
+            });
+          } else {
+            resultDiv.innerHTML = "<p>결과가 없습니다.</p>";
+          }
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          document.getElementById(
+            "results"
+          ).innerHTML = `<p>오류가 발생했습니다: ${error.message}</p>`;
         }
       }
 
